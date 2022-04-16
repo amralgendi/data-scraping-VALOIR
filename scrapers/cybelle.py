@@ -2,6 +2,10 @@ import re
 import requests
 from bs4 import BeautifulSoup
 import csv
+import os
+
+direcotory_name = os.path.dirname(__file__)
+sub_directory_name = os.path.dirname(direcotory_name) + r'\excel\cybelle.csv'
 
 data = []
 
@@ -47,8 +51,9 @@ for collection in collections:
         print('\t' + description)
         print('\t' + "; ".join(colorArr))
         data.append([link ,product_name, price, description, "; ".join(colorArr)])
-        with open('cybelle.csv', 'w') as csv_file:
+        i += 1
+
+with open(sub_directory_name, 'w') as csv_file:
             csv_writer = csv.writer(csv_file, delimiter=",")
             for line in data:
                 csv_writer.writerow(line)
-        i += 1

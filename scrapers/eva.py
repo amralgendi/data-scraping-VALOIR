@@ -4,6 +4,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import csv
+import os
+
+direcotory_name = os.path.dirname(__file__)
+sub_directory_name = os.path.dirname(direcotory_name) + r'\excel\eva.csv'
 
 array = []
 data = []
@@ -58,7 +62,7 @@ for item in items:
 
 
 
-with open('eva.csv', 'w') as csv_file:
+with open(sub_directory_name, 'w') as csv_file:
     csv_writer = csv.writer(csv_file, delimiter=",")
     for line in array:
         csv_writer.writerow(line)

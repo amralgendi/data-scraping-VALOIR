@@ -2,6 +2,10 @@ from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
 import csv
+import os
+
+direcotory_name = os.path.dirname(__file__)
+sub_directory_name = os.path.dirname(direcotory_name) + r'\excel\benefit.csv'
 
 urlBase = 'https://www.benefitcosmetics.com'
 
@@ -75,7 +79,7 @@ for i, link in enumerate(items_link):
 
 driver.quit()
 
-with open('benefit.csv', 'w', encoding='utf_8_sig') as w_csv_file:
+with open(sub_directory_name, 'w', encoding='utf_8_sig') as w_csv_file:
     csv_writer = csv.writer(w_csv_file)
     csv_writer.writerow(['name', 'price','colors', 'description', 'features', 'image link', 'link'])
     for line in data:
